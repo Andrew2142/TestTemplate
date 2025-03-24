@@ -125,13 +125,12 @@ header {
 }
 
 .text {
-    position: relative;
+    position: absolute;
     z-index: 10;
     padding:0;
     margin:0;
     margin-top: 0px;
-    text-align:
-    center;
+  
 }
 
 .text h2 {
@@ -259,11 +258,14 @@ html { scroll-behavior: smooth;
 }
 
 
-h1.userName {
-    color: #ffffff;
-    font-weight: 400;
-    font-size: 381%;
+.userName {
+  color: #ffffff;
+  white-space: nowrap;  /* Prevents text from wrapping */
+  display: inline-block; /* Ensures it respects width */
+  font-size: 3.81rem; /* Adjust this if needed */
+  max-width: 100%; /* Prevents overflow */
 }
+
 
 span.subheading {
     font-size: 150%;
@@ -405,7 +407,7 @@ section.Articles {
 
 
 .articleHeading {
-    margin-top: 20%;
+    margin-top: 10%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -457,27 +459,14 @@ p {
 
 
 
-.text {
-    margin-left: 300px;
-}
+ 
 
-.userName{
-  width: 900px!important;
-  height: 70px!important;
-  padding-top:10px!important;
-   
-}
 
 img {
     margin: 0;
     /* padding: 0; */
 }
  
-h1.userName {
-  padding-left: 200px;
-  padding-right: 200px;
-  font-size: 2.5rem!important;
-}
 
 
 img {
@@ -557,9 +546,6 @@ p{
   }
 
 
-  .text{
-    margin-left: 0px;
-  }
 
 }
 
