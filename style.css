@@ -946,3 +946,9 @@ body {
   margin:0;
    
 }
+
+
+
+.images, img {
+  display: none;
+}
