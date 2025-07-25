@@ -1,0 +1,79 @@
+<section class="px-4 py-12 bg-white">
+  <h2 class="text-center text-3xl font-semibold mb-4">Photo Galary</h2>
+  <h1 class="text-center text-gray-600 mb-10 text-2xl">
+    <i>
+          “Pictures captured, stories told, moments not forgotten"
+    </i>
+</h1>
+
+  <!-- Gallery Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <img *ngFor="let img of images; let i = index"
+         [ngSrc]="img"
+         (click)="openFullscreen(i)"
+        width="450"
+  height="300"
+  
+         alt="gallery image"
+         class="w-full object-cover rounded-lg shadow hover:scale-105 transition-transform duration-300 hover:cursor-pointer"
+         loading="lazy"
+         sizes="(max-width: 768px) 100vw, 25vw" />
+  </div>
+</section>
+
+
+<!-- Fullscreen overlay -->
+<div *ngIf="selectedIndex !== null" 
+     class="fixed inset-0 w-full bg-black bg-opacity-90 flex flex-col items-center justify-between z-50 p-4" style="height: 100vh;">
+
+  <!-- Close button -->
+    <button (click)="closeFullscreen()"
+        class="absolute top-4 right-4 text-white text-5xl font-bold z-60 transition-transform duration-300 hover:scale-125 hover:cursor-pointer"
+        aria-label="Close fullscreen">
+        &times;
+    </button>
+
+    <!-- Main fullscreen image container -->
+    <div class="flex-grow flex items-center justify-center max-w-[90vw] w-full" style="overflow: hidden;">
+        <img [src]="getOriginalImage(images[selectedIndex])"
+            alt="Fullscreen image"
+            class="object-contain max-h-full max-w-full rounded shadow-lg transition-transform duration-500" />
+    </div>
+
+  <!-- Bottom thumbnails nav with arrows -->
+  <div class="relative w-full max-w-5xl flex items-center px-4 py-2" style="height: 6.5rem;">
+
+    <!-- Left arrow -->
+    <button (click)="prevImage()"
+        class="text-white text-6xl mb-2 font-bold select-none p-2 hover:text-blue-400 transition-colors"
+        style="margin-right: 1rem;"
+        aria-label="Previous image">‹
+    </button>
+
+    <!-- Thumbnails container -->
+    <div #thumbsNav
+        class="flex w-full space-x-4 overflow-x-auto flex-1 scrollbar-hide cursor-grab"
+        (mousedown)="onMouseDown($event, thumbsNav)"
+        (mouseleave)="onMouseLeave()"
+        (mousemove)="onMouseMove($event, thumbsNav)"
+        style="height: 100%; align-items: center;">
+          <ng-container *ngFor="let img of images; let i = index">
+              <img [src]="img"
+                  (click)="openFullscreen(i)"
+                  [class.border-2]="selectedIndex === i"
+                  [class.border-blue-400]="selectedIndex === i"
+                  class="h-20 w-32 object-cover rounded-lg cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:shadow-lg"
+                  alt="Thumbnail image" />
+          </ng-container>
+    </div>
+
+    <!-- Right arrow -->
+    <button (click)="nextImage()"
+        class="text-white text-6xl mb-2 font-bold select-none hover:text-blue-400 transition-colors"
+        style="margin-left: 1rem;"
+        aria-label="Next image">›
+    </button>
+
+  </div>
+
+</div>
