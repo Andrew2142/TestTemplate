@@ -45,8 +45,8 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all",
-              "baseHref": "/TestTemplate/"
+              "outputHashing": "all" 
+             
             },
             "development": {
               "optimization": false,

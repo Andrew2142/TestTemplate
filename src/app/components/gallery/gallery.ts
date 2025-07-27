@@ -1,5 +1,8 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+ 
+ 
 
 @Component({
   selector: 'app-gallery',
@@ -16,16 +19,39 @@ export class Gallery {
   // ----------------------------
   // Image Data & State
   // ----------------------------
-  images = Array.from({ length: 25 }, (_, i) => `assets/optimized/image${i + 1}.webp`);
+  images = Array.from({ length: 31 }, (_, i) => `assets/optimized/image${i + 1}.webp`);
   selectedIndex: number | null = null;
   isMobile = false;
+  rawYoutubeLinks = [
+ 
+    'https://www.youtube.com/watch?v=QeSego_7Iek',
+    'https://www.youtube.com/watch?v=yM4IYDv6mtU',
+    
+    'https://www.youtube.com/watch?v=UGKAQjK8FGQ'
+  ];
 
+  videoEmbeds: SafeResourceUrl[] = [];
   // ----------------------------
   // Drag Scroll State
   // ----------------------------
   isDragging = false;
   startX = 0;
   scrollLeft = 0;
+
+
+  galleryModes = ['Photo Gallery', 'Video Gallery'];
+  selectedMode = 'Photo Gallery';
+  selectedModeIndex = 0;
+
+
+
+  constructor(private sanitizer: DomSanitizer){
+     this.videoEmbeds = this.rawYoutubeLinks.map((url) => {
+      const videoId = new URL(url).searchParams.get('v');
+      const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+    });
+  }
 
   // ----------------------------
   // Lifecycle Hooks
@@ -127,4 +153,6 @@ export class Gallery {
   getOriginalImage(webpPath: string): string {
     return webpPath.replace('optimized', 'images').replace('.webp', '.jpeg');
   }
+
+  
 }
