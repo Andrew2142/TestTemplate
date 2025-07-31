@@ -1,31 +1,44 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Matrix } from '../matrix/matrix';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, Matrix],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
 export class Home {
   @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
-  texts = ['Photographer', 'Video Editor', 'Videographer', 'Director'];
-  currentText = '';
+  texts = [
+    'Welcome to Slim Reviews',
+    'Collect reviews without friction',
+    'Embed with a single line of code',
+    'Built for speed, privacy, and simplicity',
+    'No logins. No bloat. Just feedback',
+    'Perfect for SaaS, products, and portfolios',
+  ];
+  currentText = '\u00A0';
   loopIndex = 0;
   isDeleting = false;
   videoSrc = 'assets/videos/video.mp4';
 
  
  
+ngOnInit(){
+   
+}
+
 
 ngAfterViewInit() {
    this.typeEffect();
-  const video = this.bgVideo.nativeElement;
-  video.muted = true;
-  video.play().catch(err => {
-    console.warn('Autoplay prevented:', err);
-  });
 }
+
+
+ 
+
+
+
 
   typeEffect(): void {
     const fullText = this.texts[this.loopIndex % this.texts.length];
@@ -48,4 +61,8 @@ ngAfterViewInit() {
       }
     }, delay);
   }
+
+
+
+  
 }
