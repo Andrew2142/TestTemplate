@@ -19,72 +19,99 @@ export class Matrix implements AfterViewInit, OnDestroy {
   private galaxyPoints!: THREE.Points;
 
   private scrollY = 0;
+  private targetZ = 70;
+  private cameraZ = 30;
+
+  private paused = false;
+  private effectEnabled = true;
 
   ngAfterViewInit(): void {
+     const deviceMemory = (navigator as any).deviceMemory;
+    if (navigator.hardwareConcurrency <= 2 || deviceMemory && deviceMemory <= 2) {
+      this.effectEnabled = false;
+      return;
+    }
+
+
     this.initThree();
     this.animate();
+
     window.addEventListener('resize', this.onWindowResize);
     window.addEventListener('scroll', this.onScroll, { passive: true });
+    document.addEventListener('visibilitychange', this.onVisibilityChange);
   }
 
   ngOnDestroy(): void {
     window.removeEventListener('resize', this.onWindowResize);
     window.removeEventListener('scroll', this.onScroll);
+    document.removeEventListener('visibilitychange', this.onVisibilityChange);
+
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    this.renderer.dispose();
+
+    if (this.renderer) {
+      this.renderer.dispose();
+    }
   }
 
   private onScroll = () => {
     this.scrollY = window.scrollY || window.pageYOffset;
-  }
+  };
+
+  private onVisibilityChange = () => {
+    if (document.hidden) {
+      cancelAnimationFrame(this.animationId);
+      this.paused = true;
+    } else if (this.paused) {
+      this.paused = false;
+      this.animate();
+    }
+  };
 
   private initThree() {
     const canvas = this.canvasRef.nativeElement;
 
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     this.renderer.setClearColor(0x000000, 1);
 
     this.scene = new THREE.Scene();
+    this.scene.fog = new THREE.FogExp2(0x000000, 0.015);
 
-    this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    this.camera.position.set(0, 0, 70);
+    this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    this.camera.position.set(0, 5, this.cameraZ);
     this.camera.lookAt(0, 0, 0);
 
-    const starsCount = 100010;
-    const radius = 50;
-    const branches = 4;
-    const spin = 0.3;
-    const randomness = 0.2;
-    const randomnessPower = 3;
+    const starsCount = window.innerWidth > 1280 ? 40000 : 20000;
+    const radius = 49;
+    const branches = 11;
+    const spin = 1;
+    const randomness = 0.1;
+    const randomnessPower = 2.0;
 
     const positions = new Float32Array(starsCount * 3);
     const colors = new Float32Array(starsCount * 3);
 
-    const insideColor = new THREE.Color(0x1b3984);
-    const outsideColor = new THREE.Color(0x1b3984);
+    const insideColor = new THREE.Color('#1b3984');
+    const outsideColor = new THREE.Color('#1b3984');
 
     for (let i = 0; i < starsCount; i++) {
       const i3 = i * 3;
-
       const radiusVal = Math.random() * radius;
       const branchAngle = ((i % branches) / branches) * Math.PI * 2;
-
       const spinAngle = radiusVal * spin;
 
       const randomX = Math.pow(Math.random(), randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * randomness * radiusVal;
-      const randomY = Math.pow(Math.random(), randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * randomness * radiusVal;
+      const randomY = Math.pow(Math.random(), randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * randomness * radiusVal * 0.5;
       const randomZ = Math.pow(Math.random(), randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * randomness * radiusVal;
 
       positions[i3] = Math.cos(branchAngle + spinAngle) * radiusVal + randomX;
-      positions[i3 + 1] = randomY * 0.2;
+      positions[i3 + 1] = randomY;
       positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radiusVal + randomZ;
 
-      const mixedColor = insideColor.clone();
-      mixedColor.lerp(outsideColor, radiusVal / radius);
-
+      const mixedColor = insideColor.clone().lerp(outsideColor, radiusVal / radius);
       colors[i3] = mixedColor.r;
       colors[i3 + 1] = mixedColor.g;
       colors[i3 + 2] = mixedColor.b;
@@ -95,13 +122,13 @@ export class Matrix implements AfterViewInit, OnDestroy {
     this.galaxyGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     this.galaxyMaterial = new THREE.PointsMaterial({
-      size: 0.15,
+      size: 0.07,
       sizeAttenuation: true,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8,
+      opacity: 1,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
     });
 
     this.galaxyPoints = new THREE.Points(this.galaxyGeometry, this.galaxyMaterial);
@@ -111,30 +138,22 @@ export class Matrix implements AfterViewInit, OnDestroy {
   private animate = () => {
     this.animationId = requestAnimationFrame(this.animate);
 
-    // Galaxy rotates on its own
     this.galaxyPoints.rotation.y += 0.0015;
 
-    // Camera moves based on scrollY
-    // Example: move camera closer/farther on Z-axis
-    // Clamp scroll effect so camera doesn't zoom too much
-    const maxScroll = 1000;  // max scroll amount to consider
+    const maxScroll = 500;
     const scrollPercent = Math.min(this.scrollY, maxScroll) / maxScroll;
+    this.targetZ = 70 - 40 * scrollPercent;
+    this.cameraZ += (this.targetZ - this.cameraZ) * 0.05;
 
-    // Camera moves between z=70 (top) to z=30 (scrolled down)
-    this.camera.position.z = 70 - 20 * scrollPercent;
-
-    // Optional: move camera slightly up/down on Y-axis too
-    this.camera.position.y = 10 * scrollPercent /0.1;
-
+    this.camera.position.z = this.cameraZ;
     this.camera.lookAt(0, 0, 0);
 
     this.renderer.render(this.scene, this.camera);
-  }
+  };
 
   private onWindowResize = () => {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
-
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-  }
+  };
 }
