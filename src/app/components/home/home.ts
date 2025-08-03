@@ -3,10 +3,11 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Matrix } from '../matrix/matrix';
 import { Navigation } from '../navigation/navigation';
 import { Pricing } from '../pricing/pricing';
+import { About } from '../about/about';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, Matrix, Navigation, Pricing],
+  imports: [CommonModule, Matrix, Navigation, Pricing, About],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })

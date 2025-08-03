@@ -85,7 +85,7 @@ export class Matrix implements AfterViewInit, OnDestroy {
     this.camera.lookAt(0, 0, 0);
 
     const starsCount = window.innerWidth > 1280 ? 40000 : 20000;
-    const radius = 49;
+    const radius = 59;
     const branches = 11;
     const spin = 1;
     const randomness = 0.1;

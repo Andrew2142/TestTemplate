@@ -1,43 +1,91 @@
-<section class="py-20 bg-white text-gray-800 px-4">
-    <div class="max-w-3xl mx-auto text-center">
-        <!-- Plan Summary -->
-        <div class="bg-gray-50 rounded-2xl px-8 mb-10 shadow-lg border border-gray-200 max-w-md mx-auto bg-gradient-to-b from-white to-blue-50">
-            <h2 class="text-4xl font-bold text-primary-500 mt-8">Pricing</h2>
-            <p class="text-lg font-semibold text-gray-900 mt-8">Base Subscription</p>
-            <p class="text-3xl font-extrabold text-primary-600">${{ basePrice }}
-                <span class="text-lg font-medium text-gray-600">/ month</span>
-            </p>
-            <ul class="mt-8 text-left text-gray-700 space-y-3 list-disc list-inside">
-                <li>1 Domain included</li>
-                <li>5 Projects per domain</li>
-            </ul>
-            <div class="justify-start flex flex-col mt-8">
-                <h3 class="text-xl   font-semibold mb-4">Add More</h3>
-                <div class="flex flex-row space-x-12 justify-center ">
-                    <!-- Domains -->
-                    <div class="flex flex-col items-center">
-                        <p class="text-gray-700 mb-2">Extra Domains</p>
-                        <input type="number" min="0" [(ngModel)]="extraDomains"
-                            class="w-25 text-center border rounded-md py-1" />
-                        <p class="text-md  mt-1">${{domainPrice}} each</p>
-                    </div>
+<section class="flex flex-col items-center  ">
+ <!-- Pricing Explanation -->
+    <section class="flex justify-center">
+          <h1 class="text-3xl md:text-4xl font-bold mb-6 text-center">Pricing Plans</h1>
+    </section>
 
-                    <!-- Projects -->
-                    <div class="flex flex-col items-center">
-                        <p class="text-gray-700 mb-2">Extra Projects</p>
-                        <input type="number" min="0" [(ngModel)]="extraProjects"
-                            class="w-25 text-center border rounded-md py-1" />
-                        <p class="text-md mt-1">${{projectPrice}} each</p>
-                    </div>
+ 
+
+  <div class="flex flex-row items-center mt-4   ">
+      <section class=" bg-white text-gray-800 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <!-- Plan Summary -->
+            <div
+                class="bg-gray-50 rounded-2xl px-8 mb-10 shadow-lg border border-gray-200 max-w-md  w-100 mx-auto bg-gradient-to-b from-white to-neutral-100">
+                
+                <p class="text-lg font-semibold text-gray-900 mt-8">Base Plan</p>
+                <p class="text-3xl font-extrabold text-primary-600">${{ basePrice }}
+                    <span class="text-lg font-medium text-gray-600">/ month</span>
+                </p>
+                <ul class="mt-8 text-left text-gray-700 space-y-3 list-disc list-inside">
+                    <li>2 Domains at a time.</li>
+                    <li>5 Projects per domain</li>
+                </ul>
+                <div class="mt-8">
+              
+                    <button class="bg-primary-500 text-white py-2 px-6 rounded-xl hover:bg-primary-600 transition">
+                       Register
+                    </button>
                 </div>
             </div>
-            <div class="mt-8">
-                <p class="text-lg mb-4">Monthly Total: <span class="font-bold">${{ totalCombined.toFixed(2) }}</span>
+        </div>
+    </section>
+
+
+
+    <section class="bg-white text-gray-800 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <!-- Plan Summary -->
+            <div
+                class="bg-gray-50 rounded-2xl px-8 mb-10 shadow-lg border border-gray-200 max-w-md w-100  mx-auto bg-gradient-to-b from-white to-blue-100">
+                
+                <p class="text-lg font-semibold text-gray-900 mt-8">Premium Plan</p>
+                <p class="text-3xl font-extrabold text-primary-600">${{ basePrice * 3 }}
+                    <span class="text-lg font-medium text-gray-600">/ month</span>
                 </p>
-                <button class="bg-primary-500 text-white py-2 px-6 rounded-xl hover:bg-primary-600 transition">
-                    Pay Now
-                </button>
+                <ul class="mt-8 text-left text-gray-700 space-y-3 list-disc list-inside">
+                    <li>5 Domains at a time.</li>
+                    <li>10 Projects per domain</li>
+                </ul>
+                <div class="mt-8">
+                    <button class="bg-primary-500 text-white py-2 px-6 rounded-xl hover:bg-primary-600 transition">
+                        Register
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+
+    <section class="bg-white text-gray-800 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <!-- Plan Summary -->
+            <div class="bg-gray-50 rounded-2xl px-8 mb-10 shadow-lg border border-gray-200 max-w-md mx-auto w-100 bg-gradient-to-b from-white to-purple-100">
+                <p class="text-lg font-semibold text-gray-900 mt-8">Pro Plan</p>
+                <p class="text-3xl font-extrabold text-primary-600">
+                    <span class="text-lg font-medium text-gray-600"><i>Contact for pricing</i></span>
+                </p>
+                <ul class="mt-8 text-left text-gray-700 space-y-3 list-disc list-inside">
+                    <li>Unlimited Domains at a time.</li>
+                    <li>Unlimited Projects per domain</li>
+                </ul>
+                <div class="mt-8">
+                    <button class="bg-primary-500 text-white py-2 px-6 rounded-xl hover:bg-primary-600 transition">
+                        Contact Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+  </div>
+
+    <section class="w-full flex flex-col justifty-start">
+   
+    <p class="mb-4">
+      <strong>Domains</strong> refer to the number of websites you can use the widget on.
+    </p>
+    <p>
+      <strong>Projects</strong> represent how many unique instances of the review widget you want to create—such as for different blog posts or article pages.
+    </p>
+  </section>
 </section>
