@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pricing',
+  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './pricing.html',
-  styleUrl: './pricing.scss'
+  styleUrls: ['./pricing.scss']  // <-- note styleUrls (plural)
 })
 export class Pricing {
   basePrice = 5;
@@ -27,8 +28,4 @@ export class Pricing {
   get totalCombined(): number {
     return this.basePrice + (this.extraDomains * this.domainPrice) + (this.extraProjects * this.projectPrice);
   }
-
-
-
-  
 }
