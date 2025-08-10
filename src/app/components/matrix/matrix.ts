@@ -26,11 +26,11 @@ export class Matrix implements AfterViewInit, OnDestroy {
   private effectEnabled = true;
 
   ngAfterViewInit(): void {
-     const deviceMemory = (navigator as any).deviceMemory;
-    if (navigator.hardwareConcurrency <= 2 || deviceMemory && deviceMemory <= 2) {
-      this.effectEnabled = false;
-      return;
-    }
+    //  const deviceMemory = (navigator as any).deviceMemory;
+    // if (navigator.hardwareConcurrency <= 2 || deviceMemory && deviceMemory <= 2) {
+    //   this.effectEnabled = false;
+    //   return;
+    // }
 
 
     this.initThree();
@@ -84,7 +84,7 @@ export class Matrix implements AfterViewInit, OnDestroy {
     this.camera.position.set(0, 5, this.cameraZ);
     this.camera.lookAt(0, 0, 0);
 
-    const starsCount = window.innerWidth > 1280 ? 40000 : 20000;
+    const starsCount = window.innerWidth > 1280 ? 20000 : 20000;
     const radius = 59;
     const branches = 11;
     const spin = 1;
