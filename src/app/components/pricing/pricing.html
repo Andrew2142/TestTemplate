@@ -1,81 +1,85 @@
-<section class="flex flex-col items-center  ">
-  <!-- Pricing Explanation -->
-  <section class="flex justify-center">
-    <h1 class="text-4xl md:text-5xl font-extrabold text-center mb-6 tracking-tight">Pricing Plans</h1>
-  </section>
+ 
 
-  <div class="flex flex-row items-center mt-4">
-    <section class="bg-white text-gray-800 px-4">
-      <div class="max-w-3xl mx-auto text-center">
-        <!-- Plan Summary -->
-        <div class="bg-gray-50 rounded-2xl px-8 mb-10 shadow-lg border border-gray-200 max-w-md w-100 mx-auto bg-gradient-to-b from-white to-neutral-100 bg-[length:200%_200%] bg-left hover:bg-right transition-all duration-500 ease-in-out hover:scale-[1.03]  hover:shadow-xl">
-          
-          <p class="text-xl font-semibold text-gray-900 mt-8">Base Plan</p>
-          <p class="text-4xl font-extrabold text-primary-600">${{ basePrice }}
-            <span class="text-xl font-medium text-gray-600">/ month</span>
+<section
+  class="relative px-6 py-24 md:px-12  bg-gradient-to-br from-neutral-50 via-neutral-200 to-neutral-300 drop-shadow-2xl   mask-fade-both overflow-hidden rounded-4xl shadow-2xl drop-shadow-2xl my-12">
+  <div class="max-w-7xl mx-auto relative z-10 text-center  px-12">
+  <!-- Pricing Explanation -->
+    <div class="flex justify-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-center text-blue-950 tracking-tight">Pricing Plans</h1>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="flex flex-col md:flex-row justify-center items-center gap-8 mb-16">
+
+      <!-- Base Plan -->
+      <div class="max-w-md w-full shadow-xl rounded-2xl">
+        <div
+          class="bg-gradient-to-b from-white to-neutral-100 rounded-2xl px-8 py-10 shadow-lg border border-neutral-300 bg-[length:200%_200%] bg-left hover:bg-right transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-xl text-center">
+          <p class="text-xl font-semibold text-blue-950 mb-4">Base Plan</p>
+          <p class="text-4xl font-extrabold text-blue-950 mb-8">
+            ${{ basePrice }}
+            <span class="text-xl font-medium text-neutral-700">/ month</span>
           </p>
-          <ul class="mt-8 text-left text-gray-700 space-y-3 list-disc list-inside text-lg">
-            <li>2 Domains at a time.</li>
+          <ul class="text-left text-neutral-800 space-y-3 list-disc list-inside text-lg mb-8">
+            <li>2 Domains at a time</li>
             <li>5 Projects per domain</li>
           </ul>
-          <div class="mt-8">
-            <button class="bg-primary-500 text-white py-3 px-8 rounded-xl hover:bg-primary-600 transition text-lg font-medium">
-              Register
-            </button>
-          </div>
+          <button
+            class="w-full bg-blue-950 text-white py-3 px-8 rounded-xl hover:bg-blue-900 transition text-lg font-medium cursor-pointer">
+            Register
+          </button>
         </div>
       </div>
-    </section>
 
-    <section class="bg-white text-gray-800 px-4">
-      <div class="max-w-3xl mx-auto text-center">
-        <!-- Plan Summary -->
-        <div class="bg-gray-50 text-white rounded-2xl px-8 mb-10 shadow-lg border border-gray-200 max-w-md w-100 mx-auto bg-gradient-to-t from-white to-neutral-400 bg-[length:200%_200%] bg-left hover:bg-right transition-all duration-500 ease-in-out hover:scale-[1.03]  hover:shadow-xl">
-          <p class="text-xl font-semibold text-gray-900 mt-8 text-black">Pro Plan</p>
-          <p class="text-4xl font-extrabold text-black">${{ basePrice * 3 }}
-            <span class="text-xl font-medium">/ month</span>
+      <!-- Pro Plan -->
+      <div class="max-w-md w-full shadow-xl rounded-2xl">
+        <div
+          class="bg-gradient-to-t from-white to-blue-200 rounded-2xl px-8 py-10 shadow-lg border border-neutral-300 bg-[length:200%_200%] bg-left hover:bg-right transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-xl text-center">
+          <p class="text-xl font-semibold text-blue-950 mb-4">Pro Plan</p>
+          <p class="text-4xl font-extrabold text-blue-950 mb-8">
+            ${{ basePrice * 3 }}
+            <span class="text-xl font-medium text-neutral-700">/ month</span>
           </p>
-          <ul class="mt-8 text-left text-gray-700 space-y-3 list-disc list-inside text-lg">
-            <li>5 Domains at a time.</li>
+          <ul class="text-left text-neutral-800 space-y-3 list-disc list-inside text-lg mb-8">
+            <li>5 Domains at a time</li>
             <li>15 Projects per domain</li>
           </ul>
-          <div class="mt-8">
-            <button class="bg-primary-500 text-white py-3 px-8 rounded-xl hover:bg-primary-600 transition text-lg font-medium">
-              Register
-            </button>
-          </div>
+          <button
+            class="w-full bg-blue-950 text-white py-3 px-8 rounded-xl hover:bg-blue-900 transition text-lg font-medium cursor-pointer">
+            Register
+          </button>
         </div>
       </div>
-    </section>
 
-    <section class="bg-white text-gray-800 px-4">
-      <div class="max-w-3xl mx-auto text-center">
-        <!-- Plan Summary -->
-        <div class="bg-gray-50 rounded-2xl px-8 mb-10 shadow-lg border border-gray-200 max-w-md mx-auto w-100 bg-gradient-to-t from-white to-purple-100 bg-[length:200%_200%] bg-left hover:bg-right transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-xl">
-          <p class="text-xl font-semibold text-gray-900 mt-8">Premium Plan</p>
-          <p class="text-4xl font-extrabold text-primary-600">
-            <span class="text-xl font-medium text-gray-600"><i>Contact for pricing</i></span>
+      <!-- Premium Plan -->
+      <div class="max-w-md w-full shadow-xl rounded-2xl">
+        <div
+          class="bg-gradient-to-t from-white to-neutral-300 rounded-2xl px-8 py-10 shadow-lg border border-neutral-300 bg-[length:200%_200%] bg-left hover:bg-right transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-xl text-center">
+          <p class="text-xl font-semibold text-blue-950 mb-4">Premium Plan</p>
+          <p class="text-4xl font-extrabold text-blue-950 mb-8">
+            <span class="text-xl font-medium text-neutral-700 italic">Contact for pricing</span>
           </p>
-          <ul class="mt-8 text-left text-gray-700 space-y-3 list-disc list-inside text-lg">
-            <li>Unlimited Domains at a time.</li>
+          <ul class="text-left text-neutral-800 space-y-3 list-disc list-inside text-lg mb-8">
+            <li>Unlimited Domains at a time</li>
             <li>Unlimited Projects per domain</li>
           </ul>
-          <div class="mt-8">
-            <button class="bg-primary-500 text-white py-3 px-8 rounded-xl hover:bg-primary-600 transition text-lg font-medium">
-              Contact Us
-            </button>
-          </div>
+          <button
+            class="w-full bg-blue-950 text-white py-3 px-8 rounded-xl hover:bg-blue-900 transition text-lg font-medium cursor-pointer">
+            Contact Us
+          </button>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
 
-  <section class="w-full flex flex-col justify-start">
-    <p class="mb-4 text-lg">
-      <strong>Domains:</strong> refer to the number of websites you can use the widget on.
-    </p>
-    <p class="text-lg">
-      <strong>Projects:</strong> represent how many unique instances of the review widget you want to create, such as for different blog posts or article pages.
-    </p>
-  </section>
+    <!-- Information Section -->
+    <div class="text-center text-blue-950 max-w-4xl mx-auto">
+      <p class="mb-4 text-lg">
+        <strong>Domains:</strong> refer to the number of websites you can use the widget on.
+      </p>
+      <p class="text-lg">
+        <strong>Projects:</strong> represent how many unique instances of the review widget you want to create, such as
+        for different blog posts or article pages.
+      </p>
+    </div>
+  </div>
 </section>
