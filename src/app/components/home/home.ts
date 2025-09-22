@@ -1,20 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Matrix } from '../matrix/matrix';
-import { Navigation } from '../navigation/navigation';
-import { Pricing } from '../pricing/pricing';
 import { About } from '../about/about';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, Matrix, Navigation, About],
+  imports: [CommonModule, Matrix, About],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
 export class Home {
   @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
   texts = [
-    'Welcome to Slim Reviews',
+    'Welcome to SlimReviews',
     'Collect reviews without friction',
     'Embed with a single line of code',
     'Built for speed, privacy, and simplicity',

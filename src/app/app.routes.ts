@@ -12,17 +12,17 @@ export const routes: Routes = [
   {
     path: 'home',
     component: Home,
-    title: 'Slim Reviews - Home'
+    title: 'SlimReviews - Home'
   },
   {
-    path: 'pricing',
+    path: 'plans',
     component: Pricing,
-    title: 'Slim Reviews - Pricing'
+    title: 'SlimReviews - Plans'
   },
   {
     path: 'contact',
     component: ContactComponent,
-    title: 'Slim Reviews - Contact'
+    title: 'SlimReviews - Contact'
   },
   {
     path: '**',

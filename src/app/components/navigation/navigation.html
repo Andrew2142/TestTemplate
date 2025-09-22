@@ -3,13 +3,13 @@
     <div class="flex items-center justify-between h-16 sm:h-20">
       <!-- Logo -->
       <div class="flex-shrink-0">
-        <span class="text-lg sm:text-xl font-bold text-white">Slim Reviews</span>
+        <span class="text-lg sm:text-xl font-bold text-white">SlimReviews</span>
       </div>
 
       <!-- Desktop Navigation Links - Centered -->
       <div class="hidden lg:flex items-center space-x-8 xl:space-x-12 absolute left-1/2 transform -translate-x-1/2">
         <a routerLink="/home" routerLinkActive="text-white" class="text-gray-200 hover:text-white transition-colors duration-200 text-base font-normal cursor-pointer">Home</a>
-        <a routerLink="/pricing" routerLinkActive="text-white" class="text-gray-200 hover:text-white transition-colors duration-200 text-base font-normal cursor-pointer">Pricing</a>
+        <a routerLink="/plans" routerLinkActive="text-white" class="text-gray-200 hover:text-white transition-colors duration-200 text-base font-normal cursor-pointer">Plans</a>
         <a routerLink="/contact" routerLinkActive="text-white" class="text-gray-200 hover:text-white transition-colors duration-200 text-base font-normal cursor-pointer">Contact Us</a>
       </div>
 
@@ -40,9 +40,9 @@
            class="text-gray-200 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer">
           Home
         </a>
-        <a routerLink="/pricing" routerLinkActive="bg-gray-800 text-white" (click)="closeMobileMenu()" 
+        <a routerLink="/plans" routerLinkActive="bg-gray-800 text-white" (click)="closeMobileMenu()" 
            class="text-gray-200 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer">
-          Pricing
+          Plans
         </a>
         <a routerLink="/contact" routerLinkActive="bg-gray-800 text-white" (click)="closeMobileMenu()" 
            class="text-gray-200 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer">
@@ -84,21 +84,21 @@
       </div>
       
       <!-- Title -->
-      <h3 class="text-lg sm:text-xl font-semibold text-white mb-4">Beta Warning</h3>
+      <h3 class="text-lg sm:text-xl font-semibold text-white mb-4">Beta Registration Closed</h3>
       
       <!-- Message -->
       <p class="text-sm sm:text-base text-gray-300 mb-6 leading-relaxed">
-        This application is currently in <span class="text-blue-400 font-medium">beta stage</span> and may contain bugs or unexpected behavior. 
-        By proceeding, you acknowledge that features may not work as expected.
+        Registration for the <span class="text-blue-400 font-medium">beta program</span> is currently closed. 
+        We're working hard to prepare for our next phase and will open registration again soon.
       </p>
       
       <!-- Buttons -->
       <div class="flex flex-col sm:flex-row gap-3">
         <button (click)="closeBetaPopup()" class="flex-1 bg-gray-600 hover:bg-gray-500 text-white font-medium py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base cursor-pointer">
-          Cancel
+          Close
         </button>
         <button (click)="proceedToBeta()" class="flex-1 bg-blue-500 hover:bg-blue-400 text-white font-medium py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base cursor-pointer">
-          Proceed Anyway
+          Visit App Anyway
         </button>
       </div>
     </div>
