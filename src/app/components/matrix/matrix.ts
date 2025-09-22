@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, OnDestroy, Input } from '@angular/core';
 import * as THREE from 'three';
 
 @Component({
@@ -8,6 +8,17 @@ import * as THREE from 'three';
 })
 export class Matrix implements AfterViewInit, OnDestroy {
   @ViewChild('canvasRef', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
+
+  // Dynamic configuration inputs
+  @Input() initialCameraZ: number = 30;
+  @Input() targetCameraZ: number = 70;
+  @Input() galaxyRadius: number = 59;
+  @Input() starCount: number = 20000;
+  @Input() particleSize: number = 0.07;
+  @Input() rotationSpeed: number = 0.0015;
+  @Input() fogDensity: number = 0.015;
+  @Input() fieldOfView: number = 60;
+  @Input() cameraY: number = 5;
 
   private renderer!: THREE.WebGLRenderer;
   private scene!: THREE.Scene;
@@ -26,12 +37,9 @@ export class Matrix implements AfterViewInit, OnDestroy {
   private effectEnabled = true;
 
   ngAfterViewInit(): void {
-    //  const deviceMemory = (navigator as any).deviceMemory;
-    // if (navigator.hardwareConcurrency <= 2 || deviceMemory && deviceMemory <= 2) {
-    //   this.effectEnabled = false;
-    //   return;
-    // }
-
+    // Initialize with input parameters
+    this.cameraZ = this.initialCameraZ;
+    this.targetZ = this.targetCameraZ;
 
     this.initThree();
     this.animate();
@@ -78,14 +86,14 @@ export class Matrix implements AfterViewInit, OnDestroy {
     this.renderer.setClearColor(0x000000, 1);
 
     this.scene = new THREE.Scene();
-    this.scene.fog = new THREE.FogExp2(0x000000, 0.015);
+    this.scene.fog = new THREE.FogExp2(0x000000, this.fogDensity);
 
-    this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    this.camera.position.set(0, 5, this.cameraZ);
+    this.camera = new THREE.PerspectiveCamera(this.fieldOfView, window.innerWidth / window.innerHeight, 0.1, 1000);
+    this.camera.position.set(0, this.cameraY, this.cameraZ);
     this.camera.lookAt(0, 0, 0);
 
-    const starsCount = window.innerWidth > 1280 ? 20000 : 20000;
-    const radius = 59;
+    const starsCount = window.innerWidth > 1280 ? this.starCount : this.starCount;
+    const radius = this.galaxyRadius;
     const branches = 11;
     const spin = 1;
     const randomness = 0.1;
@@ -122,7 +130,7 @@ export class Matrix implements AfterViewInit, OnDestroy {
     this.galaxyGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     this.galaxyMaterial = new THREE.PointsMaterial({
-      size: 0.07,
+      size: this.particleSize,
       sizeAttenuation: true,
       vertexColors: true,
       transparent: true,
@@ -138,11 +146,12 @@ export class Matrix implements AfterViewInit, OnDestroy {
   private animate = () => {
     this.animationId = requestAnimationFrame(this.animate);
 
-    this.galaxyPoints.rotation.y += 0.0015;
+    this.galaxyPoints.rotation.y += this.rotationSpeed;
 
     const maxScroll = 500;
     const scrollPercent = Math.min(this.scrollY, maxScroll) / maxScroll;
-    this.targetZ = 70 - 40 * scrollPercent;
+    const scrollRange = this.targetCameraZ - this.initialCameraZ;
+    this.targetZ = this.targetCameraZ - scrollRange * scrollPercent;
     this.cameraZ += (this.targetZ - this.cameraZ) * 0.05;
 
     this.camera.position.z = this.cameraZ;

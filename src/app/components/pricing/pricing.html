@@ -1,88 +1,100 @@
-<section
-  class="relative px-6 py-24 md:px-12 bg-gradient-to-br from-neutral-50 via-neutral-200 to-neutral-300 rounded-4xl my-12 shadow-[0_0_30px_rgba(139,92,246,0.24),0_0_60px_rgba(139,92,246,0.12)]">
+<!-- Matrix Galaxy Background -->
+<div class="fixed inset-0 z-0">
+  <app-matrix></app-matrix>
+</div>
 
-  <div class="max-w-7xl mx-auto relative z-10 text-center px-12">
-    <!-- Pricing Explanation -->
-    <div class="flex justify-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-center text-blue-950 tracking-tight">Pricing Plans</h1>
-    </div>
+<!-- Dark overlay for better text readability -->
+<div class="fixed inset-0 bg-black/30 z-10"></div>
 
-    <!-- Pricing Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-
-      <!-- Base Plan -->
-      <div class="w-full shadow-xl rounded-2xl">
-        <div
-          class="bg-gradient-to-b from-white to-neutral-100 rounded-2xl px-8 py-10 shadow-lg border border-neutral-300 bg-[length:200%_200%] bg-left hover:bg-right transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-xl text-center h-full flex flex-col">
-          <p class="text-3xl font-bold text-blue-950 mb-4">Base Plan</p>
-          <div class="mb-8 min-h-[5rem] flex items-center justify-center">
-            <p class="text-4xl font-extrabold text-blue-950">
-              ${{ basePrice }}
-              <span class="text-xl font-medium text-neutral-700">/ month</span>
-            </p>
-          </div>
-          <ul class="text-left text-neutral-800 space-y-3 list-disc list-inside text-xl mb-8 flex-grow">
-            <li>2 Domains at a time</li>
-            <li>5 Projects per domain</li>
-          </ul>
-          <button
-            class="w-full bg-blue-950 text-white py-3 px-8 rounded-xl hover:bg-blue-900 transition text-lg font-medium cursor-pointer">
-            Register
-          </button>
-        </div>
-      </div>
-
-      <!-- Pro Plan -->
-      <div class="w-full shadow-xl rounded-2xl">
-        <div
-          class="bg-gradient-to-t from-white to-blue-200 rounded-2xl px-8 py-10 shadow-lg border border-neutral-300 bg-[length:200%_200%] bg-left hover:bg-right transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-xl text-center h-full flex flex-col">
-          <p class="text-3xl font-bold text-blue-950 mb-4">Pro Plan</p>
-          <div class="mb-8 min-h-[5rem] flex items-center justify-center">
-            <p class="text-4xl font-extrabold text-blue-950">
-              ${{ basePrice * 3 }}
-              <span class="text-xl font-medium text-neutral-700">/ month</span>
-            </p>
-          </div>
-          <ul class="text-left text-neutral-800 space-y-3 list-disc list-inside text-xl mb-8 flex-grow">
-            <li>5 Domains at a time</li>
-            <li>15 Projects per domain</li>
-          </ul>
-          <button
-            class="w-full bg-blue-950 text-white py-3 px-8 rounded-xl hover:bg-blue-900 transition text-lg font-medium cursor-pointer">
-            Register
-          </button>
-        </div>
-      </div>
-
-      <!-- Premium Plan -->
-      <div class="w-full shadow-xl rounded-2xl">
-        <div
-          class="bg-gradient-to-t from-white to-neutral-300 rounded-2xl px-8 py-10 shadow-lg border border-neutral-300 bg-[length:200%_200%] bg-left hover:bg-right transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-xl text-center h-full flex flex-col">
-          <p class="text-3xl font-bold text-blue-950 mb-4">Premium Plan</p>
-          <div class="mb-8 min-h-[5rem] flex items-center justify-center">
-            <p class="text-xl font-medium text-neutral-700 italic">Contact for pricing</p>
-          </div>
-          <ul class="text-left text-neutral-800 space-y-3 list-disc list-inside text-xl mb-8 flex-grow">
-            <li>Unlimited Domains at a time</li>
-            <li>Unlimited Projects per domain</li>
-          </ul>
-          <button
-            class="w-full bg-blue-950 text-white py-3 px-8 rounded-xl hover:bg-blue-900 transition text-lg font-medium cursor-pointer">
-            Contact Us
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Information Section -->
-    <div class="text-left text-blue-950 max-w-4xl mx-auto">
-      <p class="mb-4 text-xl">
-        <strong>Domains: </strong>  refer to the number of websites you can use the widget on.
+<div class="relative z-20 min-h-screen px-4 sm:px-6 py-16 sm:py-24 lg:py-32 lg:px-8">
+  <div class="mx-auto max-w-4xl text-center">
+    <p class="mt-2 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight text-balance text-white">Choose the right plan for you</p>
+  </div>
+  <p class="mx-auto mt-4 sm:mt-6 max-w-2xl text-center text-base sm:text-lg lg:text-xl font-medium text-pretty text-gray-400">Choose an affordable plan that's packed with the best features for engaging your audience, creating customer loyalty, and driving sales.</p>
+  <div class="mx-auto mt-12 sm:mt-16 flex max-w-4xl flex-col gap-6 sm:gap-8 lg:flex-row lg:space-x-8">
+    <!-- Current Plan Card -->
+    <div class="flex-1 rounded-2xl sm:rounded-3xl bg-white/5 p-6 sm:p-8 ring-1 ring-white/10 transition-all duration-300 ease-in-out hover:bg-white/8 hover:ring-white/20 hover:shadow-lg">
+      <h3 id="tier-current" class="text-base/7 font-semibold text-blue-400">Current</h3>
+      <p class="mt-4 flex items-baseline gap-x-2">
+        <span class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white">Free Beta</span>
       </p>
-      <p class="text-xl">
-        <strong>Projects: </strong> represent how many unique instances of the review widget you want to create, such as
+      <p class="mt-6 text-base/7 text-gray-300">Get started with our core features during the beta period.</p>
+      <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-300 sm:mt-10">
+        <li class="flex gap-x-3">
+          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 flex-none text-blue-400">
+            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+          </svg>
+          2 domains
+        </li>
+        <li class="flex gap-x-3">
+          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 flex-none text-blue-400">
+            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+          </svg>
+          10 projects
+        </li>
+        <li class="flex gap-x-3">
+          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 flex-none text-blue-400">
+            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+          </svg>
+          Basic analytics
+        </li>
+        <li class="flex gap-x-3">
+          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 flex-none text-blue-400">
+            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+          </svg>
+          Customer support
+        </li>
+      </ul>
+      <a href="#" aria-describedby="tier-current" class="mt-8 block rounded-md bg-blue-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 sm:mt-10 transition-colors duration-300 cursor-pointer">Get started today</a>
+    </div>
+    
+    <!-- Future Plan Card -->
+    <div class="flex-1 rounded-2xl sm:rounded-3xl bg-gray-800/50 p-6 sm:p-8 ring-1 ring-white/10 transition-all duration-300 ease-in-out hover:bg-gray-800/70 hover:ring-white/20 hover:shadow-lg">
+      <h3 id="tier-pro" class="text-base/7 font-semibold text-blue-400">Pro</h3>
+      <p class="mt-4 flex items-baseline gap-x-2">
+        <span class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold tracking-tight text-white">Coming Soon</span>
+      </p>
+      <p class="mt-6 text-base/7 text-gray-300">Advanced features and premium support for growing businesses.</p>
+      <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-400 sm:mt-10">
+        <li class="flex gap-x-3">
+          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 flex-none text-gray-500">
+            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L8.23 10.661a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" fill-rule="evenodd" />
+          </svg>
+          Priority support
+        </li>
+        <li class="flex gap-x-3">
+          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 flex-none text-gray-500">
+            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L8.23 10.661a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" fill-rule="evenodd" />
+          </svg>
+          Custom branding
+        </li>
+        <li class="flex gap-x-3">
+          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 flex-none text-gray-500">
+            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L8.23 10.661a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" fill-rule="evenodd" />
+          </svg>
+          Unlimted Projects
+        </li>
+        <li class="flex gap-x-3">
+          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="h-6 w-5 flex-none text-gray-500">
+            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L8.23 10.661a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" fill-rule="evenodd" />
+          </svg>
+          And More
+        </li>
+      </ul>
+      <a href="#" aria-describedby="tier-pro" class="mt-8 block rounded-md bg-gray-600 px-3.5 py-2.5 text-center text-sm font-semibold text-gray-300 cursor-not-allowed sm:mt-10">Coming Soon</a>
+    </div>
+  </div>
+  
+  <!-- Information Section -->
+  <div class="mx-auto mt-16 max-w-4xl text-center">
+    <div class="text-left text-gray-300 max-w-4xl mx-auto">
+      <p class="mb-4 text-lg">
+        <strong class="text-white">Domains:</strong> refer to the number of websites you can use the widget on.
+      </p>
+      <p class="text-lg">
+        <strong class="text-white">Projects:</strong> represent how many unique instances of the review widget you want to create, such as
         a page, section or campaign.
       </p>
     </div>
   </div>
-</section>
+</div>

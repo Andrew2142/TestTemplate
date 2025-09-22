@@ -1,0 +1,38 @@
+// Contact component styles
+// Currently using Tailwind classes in the template
+
+// Custom input focus effects
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+// Smooth transitions for form elements
+input,
+textarea,
+button {
+  transition: all 0.3s ease-in-out;
+}
+
+// Custom scrollbar for textarea
+textarea {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.5) transparent;
+}
+
+textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(99, 102, 241, 0.5);
+  border-radius: 3px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(99, 102, 241, 0.7);
+}

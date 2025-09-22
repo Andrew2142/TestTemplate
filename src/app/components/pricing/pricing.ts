@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Matrix } from '../matrix/matrix';
 
 @Component({
   selector: 'app-pricing',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Matrix],
   templateUrl: './pricing.html',
   styleUrls: ['./pricing.scss']  // <-- note styleUrls (plural)
 })
