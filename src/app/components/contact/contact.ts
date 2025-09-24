@@ -12,7 +12,7 @@ import { Matrix } from '../matrix/matrix';
 })
 export class ContactComponent {
   contactForm: FormGroup;
-  emailAddress = 'adelange40@gmail.com';
+  emailAddress = 'support@slimreviews.net';
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
