@@ -3,10 +3,11 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Matrix } from '../matrix/matrix';
 import { About } from '../about/about';
 import { ProductOverview } from '../product-overview/product-overview';
+import { NpmOverview } from '../npm-overview/npm-overview';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, Matrix, About, ProductOverview],
+  imports: [CommonModule, Matrix, About, ProductOverview, NpmOverview],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
@@ -25,19 +26,16 @@ export class Home {
   isDeleting = false;
   videoSrc = 'assets/videos/video.mp4';
 
- 
- 
-ngOnInit(){
-   
-}
 
 
-ngAfterViewInit() {
-   this.typeEffect();
-}
+  ngOnInit() {
+
+  }
 
 
- 
+  ngAfterViewInit() {
+    this.typeEffect();
+  }
 
 
 
@@ -66,5 +64,5 @@ ngAfterViewInit() {
 
 
 
-  
+
 }

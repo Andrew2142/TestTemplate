@@ -1,13 +1,25 @@
-@keyframes gradientBG {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.animated-gradient {
+  background: linear-gradient(
+    -45deg,
+    #000000,         /* black top */
+    #000000 20%, 
+    #09090f 40%,     /* darker blue hint (~25% darker) */
+    #050519 60%,     /* subtle brighter dark blue */
+    #09090f 80%, 
+    #000000 100%     /* black bottom */
+  );
+  background-size: 600% 600%; /* allows smooth movement */
+  animation: gradientBG 25s ease infinite;
 }
 
-.animated-gradient {
-  background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
+
+ 
 
    /* Glowing text effect */
    .glow-text {
