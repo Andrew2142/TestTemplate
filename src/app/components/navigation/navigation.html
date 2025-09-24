@@ -8,26 +8,33 @@
 
       <!-- Desktop Navigation Links - Centered -->
       <div class="hidden lg:flex items-center space-x-8 xl:space-x-12 absolute left-1/2 transform -translate-x-1/2">
-        <a routerLink="/home" routerLinkActive="text-white" class="text-gray-200 hover:text-white transition-colors duration-200 text-base font-normal cursor-pointer">Home</a>
-        <a routerLink="/plans" routerLinkActive="text-white" class="text-gray-200 hover:text-white transition-colors duration-200 text-base font-normal cursor-pointer">Plans</a>
-        <a routerLink="/contact" routerLinkActive="text-white" class="text-gray-200 hover:text-white transition-colors duration-200 text-base font-normal cursor-pointer">Contact Us</a>
+        <a routerLink="/home" routerLinkActive="text-white"
+          class="text-gray-200 hover:text-white transition-colors duration-200 text-base font-normal cursor-pointer">Home</a>
+        <a routerLink="/plans" routerLinkActive="text-white"
+          class="text-gray-200 hover:text-white transition-colors duration-200 text-base font-normal cursor-pointer">Plans</a>
+        <a routerLink="/contact" routerLinkActive="text-white"
+          class="text-gray-200 hover:text-white transition-colors duration-200 text-base font-normal cursor-pointer">Contact Us</a>
       </div>
 
       <!-- Desktop Log in Button -->
       <div class="hidden lg:flex items-center">
-        <button (click)="showBetaMessage()" class="text-sm font-semibold text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer">
+        <button (click)="showBetaMessage()"
+          class="text-sm font-semibold text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer">
           Log in <span aria-hidden="true">&rarr;</span>
         </button>
       </div>
 
       <!-- Mobile Menu Button -->
       <div class="lg:hidden">
-        <button (click)="toggleMobileMenu()" class="text-gray-300 hover:text-white focus:outline-none transition-colors duration-200 p-2 cursor-pointer">
-          <svg *ngIf="!mobileMenuOpen" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        <button (click)="toggleMobileMenu()"
+          class="text-gray-300 hover:text-white focus:outline-none transition-colors duration-200 p-2 cursor-pointer">
+          <svg *ngIf="!mobileMenuOpen" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
-          <svg *ngIf="mobileMenuOpen" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          <svg *ngIf="mobileMenuOpen" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -36,20 +43,20 @@
     <!-- Mobile Menu -->
     <div *ngIf="mobileMenuOpen" class="lg:hidden border-t border-gray-700">
       <div class="px-2 pt-2 pb-3 space-y-1 bg-black">
-        <a routerLink="/home" routerLinkActive="bg-gray-800 text-white" (click)="closeMobileMenu()" 
-           class="text-gray-200 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer">
+        <a routerLink="/home" routerLinkActive="bg-gray-800 text-white" (click)="closeMobileMenu()"
+          class="text-gray-200 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer">
           Home
         </a>
-        <a routerLink="/plans" routerLinkActive="bg-gray-800 text-white" (click)="closeMobileMenu()" 
-           class="text-gray-200 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer">
+        <a routerLink="/plans" routerLinkActive="bg-gray-800 text-white" (click)="closeMobileMenu()"
+          class="text-gray-200 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer">
           Plans
         </a>
-        <a routerLink="/contact" routerLinkActive="bg-gray-800 text-white" (click)="closeMobileMenu()" 
-           class="text-gray-200 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer">
+        <a routerLink="/contact" routerLinkActive="bg-gray-800 text-white" (click)="closeMobileMenu()"
+          class="text-gray-200 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer">
           Contact Us
         </a>
-        <button (click)="showBetaMessage(); closeMobileMenu()" 
-                class="w-full text-left text-gray-200 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer">
+        <button (click)="showBetaMessage(); closeMobileMenu()"
+          class="w-full text-left text-gray-200 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer">
           Log in →
         </button>
       </div>
@@ -64,40 +71,45 @@
 <div *ngIf="showBetaPopup" class="fixed inset-0 z-50 flex items-center justify-center p-4" style="z-index: 10000;">
   <!-- Backdrop -->
   <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" (click)="closeBetaPopup()"></div>
-  
+
   <!-- Modal -->
   <div class="relative rounded-2xl sm:rounded-3xl bg-white/5 p-6 sm:p-8 ring-1 ring-white/10 backdrop-blur-md max-w-sm sm:max-w-md w-full mx-4 shadow-2xl animate-in fade-in zoom-in duration-300">
     <!-- Close button -->
-    <button (click)="closeBetaPopup()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">
+    <button (click)="closeBetaPopup()"
+      class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
-    
+
     <!-- Content -->
     <div class="text-center">
       <!-- Icon -->
       <div class="mx-auto flex items-center justify-center w-16 h-16 bg-blue-500/20 rounded-full mb-6">
         <svg class="w-8 h-8 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+          <path fill-rule="evenodd"
+            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+            clip-rule="evenodd" />
         </svg>
       </div>
-      
+
       <!-- Title -->
       <h3 class="text-lg sm:text-xl font-semibold text-white mb-4">Beta Registration Closed</h3>
-      
+
       <!-- Message -->
       <p class="text-sm sm:text-base text-gray-300 mb-6 leading-relaxed">
-        Registration for the <span class="text-blue-400 font-medium">beta program</span> is currently closed. 
+        Registration for the <span class="text-blue-400 font-medium">beta program</span> is currently closed.
         We're working hard to prepare for our next phase and will open registration again soon.
       </p>
-      
+
       <!-- Buttons -->
       <div class="flex flex-col sm:flex-row gap-3">
-        <button (click)="closeBetaPopup()" class="flex-1 bg-gray-600 hover:bg-gray-500 text-white font-medium py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base cursor-pointer">
+        <button (click)="closeBetaPopup()"
+          class="flex-1 bg-gray-600 hover:bg-gray-500 text-white font-medium py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base cursor-pointer">
           Close
         </button>
-        <button (click)="proceedToBeta()" class="flex-1 bg-blue-500 hover:bg-blue-400 text-white font-medium py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base cursor-pointer">
+        <button (click)="proceedToBeta()"
+          class="flex-1 bg-blue-500 hover:bg-blue-400 text-white font-medium py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base cursor-pointer">
           Visit App Anyway
         </button>
       </div>
