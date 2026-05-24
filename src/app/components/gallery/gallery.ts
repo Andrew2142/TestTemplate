@@ -19,7 +19,12 @@ export class Gallery {
   // ----------------------------
   // Image Data & State
   // ----------------------------
-  images = Array.from({ length: 35 }, (_, i) => `assets/optimized/image${i + 1}.webp`);
+  images = [
+    31, 32, 33, 35, 14, 23, 27, 21, 29, 17,
+    19, 28, 12, 6, 20, 16, 25, 30, 15, 22,
+    10, 2, 1, 18, 7, 5, 24, 3, 11, 4,
+    8, 9, 13, 26, 34
+  ].map((imageNumber) => `assets/optimized/image${imageNumber}.webp`);
   selectedIndex: number | null = null;
   isMobile = false;
   rawYoutubeLinks = [
