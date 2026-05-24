@@ -19,7 +19,7 @@ export class Gallery {
   // ----------------------------
   // Image Data & State
   // ----------------------------
-  images = Array.from({ length: 31 }, (_, i) => `assets/optimized/image${i + 1}.webp`);
+  images = Array.from({ length: 35 }, (_, i) => `assets/optimized/image${i + 1}.webp`);
   selectedIndex: number | null = null;
   isMobile = false;
   rawYoutubeLinks = [
